@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    volumes:
+      -.:/app
+  mongo:
+    image: mongo:lates
+    ports:
+      -8000:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+      - MONGO_INITDB_DATABASE=phonedb
+    volumes:
+      -./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro

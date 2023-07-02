@@ -1,10 +1,10 @@
 const ModelsNames = {
-    product : "Products",
-    brand : "Brands",
-    user : "Users",
-    cart : "Carts",
-    order : "Orders",
-    address : "Address"
+    post : "posts",
+    user : "users",
+    address : "adresses",
+    brand : "brands",
+    product : "products",
+    cart : "carts",
 }
 
-export default  ModelsNames
+export default ModelsNames

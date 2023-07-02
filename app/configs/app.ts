@@ -1,5 +1,9 @@
-import { configDotenv } from "dotenv";
+import cors from "cors";
+import bcrypt from "bcrypt"
+// allowed host 
 
-configDotenv()
 
-export const PORT = process.env.PORT
+const corsOption : cors.CorsOptions = {
+optionsSuccessStatus:200,
+origin :()=>{}
+}

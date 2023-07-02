@@ -1,0 +1,11 @@
+FROM node:18
+
+WORKDIR /app
+
+COPY ./dist/* /app/
+
+COPY package.json /app/package.json
+
+COPY .env /app/env
+
+CMD [ "yarn" , "node index.js"]

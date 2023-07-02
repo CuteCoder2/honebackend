@@ -1,18 +1,18 @@
-import { configDotenv } from "dotenv";
-import express from "express";
-import { PORT } from "./configs/app";
-import productRouts from "./routers/apis/ProductsApis";
+import {configDotenv} from  "dotenv"
+import App from "./App"
+import PostController from "./resources/controllers/PostControllers"
+import UserController from "./resources/controllers/UserController"
 
-const app = express()
 
-app.get('/' , (req , res)=>{
-    console.log('ready to process');
-    
-    res.json({msg  :  "all working just fine"})
-})
+configDotenv()
+const app = new App(
+[
+    new PostController(),
+    new UserController()
+] , 
 
-app.use('/products' , productRouts)
+Number(process.env.PORT),
 
-app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
-})
+process.env.MONGODB_DEV_URL as string)
+
+app.listen()
