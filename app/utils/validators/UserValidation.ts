@@ -1,14 +1,15 @@
 import joi from "joi"
 
 export const registerUserValidation = joi.object({
-    name: joi.string().max(30).required(),
+    first_name: joi.string().max(30).required(),
+    last_name: joi.string().max(30).required(),
     email : joi.string().email().required(),
     password : joi.string().min(8).required(),
+    username : joi.string().required(),
+    phone : joi.string().required(),
 })
 
 export const loginUserValidation = joi.object({
-    username : joi.string().email().required(),
+    username : joi.string().required(),
     password : joi.string().min(8).required(),
 })
-
-export default {registerUserValidation}

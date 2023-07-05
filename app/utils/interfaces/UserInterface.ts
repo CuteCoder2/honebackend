@@ -7,7 +7,7 @@ export default  interface UserInterface extends Document {
         first_name:string,
         last_name:string,
     },
-    phone:string,
+    phone:Array<string>,
     username:string,
     password:string,
     role:string,

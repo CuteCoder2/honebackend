@@ -5,7 +5,7 @@ import TokenInterface from "../utils/interfaces/TokenInterface";
 import HttpException from "../utils/exceptions/HttpException";
 import  Jwt  from "jsonwebtoken";
 
-const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction) : Promise<Response |void>=>{
+const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction) : Promise<Response |void> =>{
     const beareToken = req.headers.authorization
     if (!beareToken || !beareToken.startsWith('Bearer')) {
         return next(new HttpException(4001 , 'unauthorised action'))

@@ -5,7 +5,6 @@ export type registerUserdataType = {
     phone:string,
     email:string,
     password:string,
-    role : "admin"|"user"
 }
 
 export type loginUserDataType = {

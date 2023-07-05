@@ -5,14 +5,16 @@ import UserController from "./resources/controllers/UserController"
 
 
 configDotenv()
+
+
+
 const app = new App(
 [
     new PostController(),
     new UserController()
 ] , 
-
 Number(process.env.PORT),
-
-process.env.MONGODB_DEV_URL as string)
+process.env.MONGO_DEV_URL as string
+)
 
 app.listen()

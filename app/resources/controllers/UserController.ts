@@ -2,9 +2,10 @@ import { Router , Request , Response , NextFunction  } from "express";
 import ControllerInterface from "../../utils/interfaces/ControllersInterface";
 import UserService from "../services/UserServices";
 import ValidationMiddleWare from "../../middlewares/ValidationMiddleWare";
-import { registerUserValidation } from "../../utils/validators/UserValidation";
+import { loginUserValidation, registerUserValidation } from "../../utils/validators/UserValidation";
 import HttpException from "../../utils/exceptions/HttpException";
-import AuthUserMiddleWare from "../../middlewares/authenticatedUserMiddleWare";
+import AuthUserMiddleWare from "../../middlewares/AuthenticatedUserMiddleWare";
+import { RegisterUserUniqueFieldValidation } from "../../middlewares/UserMiddleWare";
 
 class UserController implements ControllerInterface {
     path = "/users";
@@ -16,14 +17,15 @@ class UserController implements ControllerInterface {
     }
     
     private initRoutes(){
-        this.router.post(
+        this.router
+        .post(
         `${this.path}/register`,
-        ValidationMiddleWare(registerUserValidation),
+        [ValidationMiddleWare(registerUserValidation) , RegisterUserUniqueFieldValidation],
         this.register)
 
         this.router.post(
         `${this.path}/login`,
-        ValidationMiddleWare(registerUserValidation),
+        ValidationMiddleWare(loginUserValidation),
         this.login)
 
         this.router.get(
@@ -32,13 +34,13 @@ class UserController implements ControllerInterface {
         this.getUser)
     }
 
-    private register = async (req:Request , res:Response , next:NextFunction): Promise<Response|void> => {
+    private register = async (req:Request , res:Response , next:NextFunction) => {
         try {
-            const {email , first_name , last_name , password , phone , role , username} = req.body
-            const userdata = await this.service.register({email , first_name , last_name , password , phone , role , username}) 
+            const {email , first_name , last_name , password , phone , username} = req.body
+            const userdata = await this.service.register({email , first_name ,last_name , password , phone , username}) 
             res.status(201).json(userdata)
         }catch (error) {
-            next(new HttpException(400 , "failed to register user"))
+            return next(new HttpException(400 , "failed to register user"))
         }
     }
 
@@ -48,7 +50,7 @@ class UserController implements ControllerInterface {
             const user = await this.service.login({username , password })
             res.status(200).json(user)
         } catch (error) {
-            next(new HttpException(400 , "failed to login user"))
+           return  next(new HttpException(400 , "failed to login user"))
         }
     }
 

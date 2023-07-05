@@ -4,7 +4,7 @@ import compression from "compression"
 import cors from "cors"
 import morgan from "morgan"
 import Controller from "./utils/interfaces/ControllersInterface"
-import ErrorMiddleWare from "./middlewares/errorInterface"
+import ErrorMiddleWare from "./middlewares/ErrorMiddleWare"
 import helmet from "helmet"
 import DbConnection from "./db/connection";
 import ValidateDotEnv from "./utils/validators/validateEnv";
@@ -38,8 +38,7 @@ class App {
 
     private initControllers(controllers: Controller[]): void {
         controllers.map((controller: Controller) => {
-            // this.express.use("/api", controller.router)
-            this.express.use("/", controller.router)
+            this.express.use("/api", controller.router)
         })
     }
 

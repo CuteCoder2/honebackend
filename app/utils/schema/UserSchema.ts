@@ -1,11 +1,12 @@
-import { Schema, SchemaTypes } from "mongoose"
-import bcrypt from "bcrypt"
+import { Schema } from "mongoose"
 import UserInterface from "../interfaces/UserInterface"
 
 const UserSchema = new Schema<UserInterface>({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique :true,
+        trim :true,
     },
     name: {
         first_name: {
@@ -35,19 +36,5 @@ const UserSchema = new Schema<UserInterface>({
     }
 },
 {timestamps:true})
-
-UserSchema.pre('save' , async function (next){
-    if(!this.isModified('password')){
-        return next()
-    }
-    const hashedPassword = await bcrypt.hash(this.password , 10)
-    this.password = hashedPassword
-    next()
-})
-
-
-UserSchema.methods.isValidPassword = async function(password:string) :Promise<Error | boolean>{
-    return await bcrypt.compare(password , this.password)
-}
 
 export default UserSchema
