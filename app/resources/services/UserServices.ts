@@ -1,14 +1,15 @@
-import { registerUserdataType, loginUserDataType} from "../../helpers/types/services/UserServicesType";
+import { registerUserDataType, loginUserDataType} from "../../helpers/types/services/UserServicesType";
+
 import Token from "../../utils/token/Token";
 import UserModel from "../models/UserModel";
 
 class UserService {
-    private user = UserModel
+    private model = UserModel
 
-    public async register(data: registerUserdataType) {
+    public async register(data: registerUserDataType) {
         try {
 
-            const user = await this.user.create({
+            const user = await this.model.create({
                 email:data.email,
                 username:data.username,
                 password:data.password,
@@ -33,7 +34,7 @@ class UserService {
 
     public async login(data: loginUserDataType) {
         try {
-            const user = await this.user.findOne({ username: data.username })
+            const user = await this.model.findOne({ username: data.username })
             
             if(!user){
                 throw new Error('no user matche the following credentials')

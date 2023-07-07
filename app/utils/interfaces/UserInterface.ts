@@ -1,7 +1,7 @@
 import { Document } from "mongoose";
 
 
-export default  interface UserInterface extends Document {
+export default  interface UserI extends Document {
     email:string,
     name:{
         first_name:string,

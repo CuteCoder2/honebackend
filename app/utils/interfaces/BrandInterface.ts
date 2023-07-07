@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 
-export default interface BrandInterface extends Document{
+export default interface BrandI extends Document{
     name:string,
     image:string,
 }

@@ -1,17 +1,18 @@
 import { Document } from "mongoose";
 import BrandI from "./BrandInterface";
+import { productCat, productType } from "../../helpers/types/global/commonTypes";
 
-export default interface Product extends Document{
-    name:string,
-    price : {
-        cost_price:number,
-        selling_price:number
+export default interface ProductI extends Document {
+    name: string,
+    price: {
+        cost: number,
+        selling: number
     },
-    camera:{
-        front:string,
-        back:string,
-    },
-    image:string,
-    extra_images : string[],
-    brand:BrandI,
-    descrbtion:strin
+    brand: BrandI,
+    image: string,
+    images: string[],
+    describtion: string,
+    category : productCat[],
+    type : productType
+
+}
