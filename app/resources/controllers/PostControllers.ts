@@ -1,13 +1,13 @@
 import {Router , Request , Response , NextFunction} from "express"
-import HttpException from "../../utils/exceptions/HttpException"
-import ValidationMiddleware from "../../middlewares/ValidationMiddleWare"
-import Validate from "../../utils/validators/PostValidator"
-import PostService from "../services/PostService"
-import data from "../../data"
-import ControllersInterface from "../../utils/interfaces/ControllersInterface"
+import HttpException from "@/utils/exceptions/HttpException"
+import ValidationMiddleware from "@/middleware/ValidationMiddleWare"
+import Validate from "@/utils/validators/PostValidator"
+import PostService from "@/resources/services/PostService"
+import data from "@/data"
+import ControllerI from "@/utils/interfaces/ControllersInterface"
 
 
-export default class PostController implements ControllersInterface {
+export default class PostController implements ControllerI {
 
     path = "/post"
     router = Router()

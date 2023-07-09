@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import HttpException from "../utils/exceptions/HttpException";
-import UserModel from "../resources/models/UserModel";
+import HttpException from "@/utils/exceptions/HttpException";
+import UserModel from "@/resources/models/UserModel";
 
 
 /**

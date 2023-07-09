@@ -5,6 +5,7 @@ export default class DbConnection {
   constructor(urlstring : string) {
     this.mongooseDbConnection(urlstring)
     .then((e)=>{
+      // console.log(e)      
       console.log("connected to db")      
     })
     .catch((e) => {

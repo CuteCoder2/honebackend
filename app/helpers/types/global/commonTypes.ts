@@ -15,12 +15,12 @@ export enum simType {
 }
 
 export enum productType {
-    mobile = "mobile",
-    fixedtel = "fixed phone",
+    mobile_p = "mobile phone",
+    fixed_p = "fixed phone",
     pc = "computer"
 }
 
 export enum productCat  {
-    elec = "electronic",
+    elect = "electronic",
     
 }

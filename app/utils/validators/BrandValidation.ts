@@ -1,10 +1,11 @@
 import joi from "joi"
 
-const BrandValidation = joi.object({
+export const BrandValidation = joi.object({
     name:joi.string().required(),
     image:joi.string().required(),
 })
 
-
-
-export default {BrandValidation}
+export const updateBrandValidation = joi.object({
+    name:joi.string(),
+    image:joi.string(),
+})

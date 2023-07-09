@@ -1,5 +1,5 @@
-import PostModel from "../models/PostSchema"
-import PostsInterface from "../../helpers/types/models/PostsInterface"
+import PostModel from "@/resources/models/PostSchema"
+import PostsInterface from "@/helpers/types/models/PostsInterface"
 
 class PostService {
     private model = PostModel

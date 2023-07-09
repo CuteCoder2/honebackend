@@ -1,6 +1,6 @@
 import { model } from "mongoose";
-import ModelsNames from "../../helpers/models/Name";
-import UserSchema from "../../utils/schema/UserSchema";
+import ModelsNames from "@/helpers/models/name";
+import UserSchema from "@/utils/schema/UserSchema";
 import bycrpt from "bcrypt"
 
 

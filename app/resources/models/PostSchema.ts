@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose"
-import ModelsNames from "../../helpers/models/Name"
-import PostsInterface from "../../helpers/types/models/PostsInterface"
+import ModelsNames from "@/helpers/models/name"
+import PostsInterface from "@/helpers/types/models/PostsInterface"
 
 const PostSchema = new Schema({
     title: {

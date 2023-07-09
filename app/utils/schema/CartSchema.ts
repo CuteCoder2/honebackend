@@ -1,6 +1,6 @@
 import { Schema, SchemaTypes } from "mongoose"
 import CartI from "../interfaces/CartInterface"
-import ModelsNames from "../../helpers/models/Name"
+import ModelsNames from "../../helpers/models/name"
 
 const CartSchema = new Schema<CartI>({
     user: {

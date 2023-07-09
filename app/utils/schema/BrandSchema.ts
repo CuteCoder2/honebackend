@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import BrandInterface from "../interfaces/BrandInterface";
+import BrandInterface from "@/utils/interfaces/BrandInterface";
 
 const BrandSchema = new Schema<BrandInterface>({
     name:{

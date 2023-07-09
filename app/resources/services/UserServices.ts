@@ -1,7 +1,7 @@
-import { registerUserDataType, loginUserDataType} from "../../helpers/types/services/UserServicesType";
+import { registerUserDataType, loginUserDataType} from "@/helpers/types/services/UserServicesType";
 
-import Token from "../../utils/token/Token";
-import UserModel from "../models/UserModel";
+import Token from "@/utils/token/Token";
+import UserModel from "@/resources/models/UserModel";
 
 class UserService {
     private model = UserModel

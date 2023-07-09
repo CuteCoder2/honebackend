@@ -1,13 +1,14 @@
 import { Router , Request , Response , NextFunction  } from "express";
-import ControllerInterface from "../../utils/interfaces/ControllersInterface";
-import UserService from "../services/UserServices";
-import ValidationMiddleWare from "../../middlewares/ValidationMiddleWare";
-import { loginUserValidation, registerUserValidation } from "../../utils/validators/UserValidation";
-import HttpException from "../../utils/exceptions/HttpException";
-import AuthUserMiddleWare from "../../middlewares/AuthenticatedUserMiddleWare";
-import { RegisterUserUniqueFieldValidation } from "../../middlewares/UserMiddleWare";
+import ControllerInterface from "@/utils/interfaces/ControllersInterface";
+import UserService from "@/resources/services/UserServices";
+import ValidationMiddleWare from "@/middleware/ValidationMiddleWare";
+import { loginUserValidation, registerUserValidation } from "@/utils/validators/UserValidation";
+import HttpException from "@/utils/exceptions/HttpException";
+import AuthUserMiddleWare from "@/middleware/authenticatedUserMiddleWare";
+import { RegisterUserUniqueFieldValidation } from "@/middleware/UserMiddleWare";
 
 class UserController implements ControllerInterface {
+
     path = "/users";
     router = Router()
     service = new UserService()

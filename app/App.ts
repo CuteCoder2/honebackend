@@ -3,11 +3,11 @@ import express, { Application } from "express";
 import compression from "compression"
 import cors from "cors"
 import morgan from "morgan"
-import Controller from "./utils/interfaces/ControllersInterface"
-import ErrorMiddleWare from "./middlewares/ErrorMiddleWare"
+import Controller from "@/utils/interfaces/ControllersInterface"
 import helmet from "helmet"
-import DbConnection from "./db/connection";
-import ValidateDotEnv from "./utils/validators/validateEnv";
+import DbConnection from "@/db/connection";
+import ValidateDotEnv from "@/utils/validators/validateEnv";
+import ErrorMiddleWare from "@/middleware/middleware";
 
 class App {
     public express: Application
@@ -26,13 +26,13 @@ class App {
     }
 
     private initMiddleWares(): void {
+        this.express.use(compression())
         this.express.use(helmet())
         this.express.use(morgan("dev"))
         this.express.use(cors())
         this.express.use(express.json())
         this.express.use(express.urlencoded({ extended: false }))
         this.express.use('/' , express.static(path.join(__dirname , '..' , "app/build")))
-        this.express.use(compression())
     }
 
 

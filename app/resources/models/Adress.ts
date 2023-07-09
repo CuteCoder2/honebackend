@@ -1,5 +1,5 @@
 import { Schema, SchemaTypes, model } from "mongoose";
-import ModelsNames from "../../helpers/models/Name";
+import ModelsNames from "@/helpers/models/name";
 
 const UserAddressSchema = new Schema({
     country : String ,

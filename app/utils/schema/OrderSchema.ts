@@ -1,7 +1,7 @@
 import { Schema, SchemaTypes } from "mongoose"
-import ModelsNames from "../../helpers/models/Name"
-import { stateType } from "../../helpers/types/global/commonTypes"
-import OrderI from "../interfaces/OrderInterface"
+import ModelsNames from "@/helpers/models/name"
+import { stateType } from "@/helpers/types/global/commonTypes"
+import OrderI from "@/utils/interfaces/OrderInterface"
 
 const OrderSchema = new Schema<OrderI>({
     user: {

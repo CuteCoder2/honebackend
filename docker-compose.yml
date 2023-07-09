@@ -7,7 +7,7 @@ services:
     ports:
       - 9000:9000
     volumes:
-      -.:/app
+      - .:/app
   mongo:
     image: mongo:lates
     ports:

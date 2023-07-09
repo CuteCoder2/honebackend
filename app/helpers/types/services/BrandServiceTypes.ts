@@ -1,0 +1,1 @@
+export type BrandType = { name: string, image: string }
