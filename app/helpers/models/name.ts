@@ -1,10 +1,14 @@
 const ModelsNames = {
-    post : "post",
-    user : "user",
-    address : "adress",
-    brand : "brand",
-    product : "product",
-    cart : "cart",
+    post : "posts",
+    user : "users",
+    address : "addresses",
+    brand : "brands",
+    product : "products",
+    cart : "carts",
+    phone : "phones",
+    pc : "computers",
+    phoneacc:"phone_accessories",
+    rating:"ratings"
 }
 
 export default ModelsNames

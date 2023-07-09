@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import BrandI from "./BrandInterface";
+import BrandI from "@/utils/interfaces/BrandInterface";
 import { productCat, productType } from "@/helpers/types/global/commonTypes";
 
 export default interface ProductI extends Document {
@@ -8,6 +8,7 @@ export default interface ProductI extends Document {
         cost: number,
         selling: number
     },
+    stock:number,
     brand: BrandI,
     image: string,
     images: string[],

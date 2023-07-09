@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { osType, simType } from "../../helpers/types/global/commonTypes";
+import { osType, simType } from "@/helpers/types/global/commonTypes";
 
 export default interface PhoneI extends Document {
     camera: {
@@ -41,7 +41,6 @@ export default interface PhoneI extends Document {
         type:string,
         colorGamut:string
     }
-    stock:number,
     sim:{
         type: simType,
         num : number

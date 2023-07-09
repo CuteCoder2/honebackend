@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
-import UserInterface from "../interfaces/UserInterface"
-import TokenInterface from "../interfaces/TokenInterface"
+import UserInterface from "@/utils/interfaces/UserInterface"
+import TokenInterface from "@/utils/interfaces/TokenInterface"
 
 export const  createToken = (user:UserInterface): string =>{
     return jwt.sign(

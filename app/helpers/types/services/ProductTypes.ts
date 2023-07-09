@@ -35,3 +35,4 @@ export type updateProductDatatype = {
     category?:productCat,
     images?: string,
 }
+

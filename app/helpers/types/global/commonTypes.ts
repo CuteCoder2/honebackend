@@ -15,12 +15,18 @@ export enum simType {
 }
 
 export enum productType {
-    mobile_p = "mobile phone",
-    fixed_p = "fixed phone",
-    pc = "computer"
+    mobile = "phone",
+    pc = "computer",
+    chg = "charger",
+    phoneAcc = "phone accessories",
+    watch = "smart watch"
 }
 
 export enum productCat  {
-    elect = "electronic",
-    
+    elect = "electronic",    
+}
+
+export enum hardDriveType {
+    sat= "SATA",
+    ssd = "SSD"
 }

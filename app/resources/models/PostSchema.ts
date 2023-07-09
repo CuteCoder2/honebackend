@@ -17,4 +17,4 @@ const PostSchema = new Schema({
     }
 )
 
-export default model<PostsInterface>(ModelsNames.post , PostSchema)
+export default model<PostsInterface>(ModelsNames.post, PostSchema)

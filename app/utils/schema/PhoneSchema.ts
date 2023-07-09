@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import PhoneI from "../interfaces/phoneInterface";
-import { osType, simType } from "../../helpers/types/global/commonTypes";
+import PhoneI from "@/utils/interfaces/phoneInterface";
+import { osType, simType } from "@/helpers/types/global/commonTypes";
 
 const phoneSchema = new Schema<PhoneI>({
     camera: {
@@ -44,10 +44,10 @@ const phoneSchema = new Schema<PhoneI>({
     },
     battery: {
         capacity: {
-            tyep: String,
+            type: String,
             required: true
         },
-        wirelessSurport: {
+        wirelessSurpport: {
             type: Boolean,
             required: true
         },
@@ -103,24 +103,20 @@ const phoneSchema = new Schema<PhoneI>({
         },
         color: {
             type: String,
-            reqyuired: true
+            required: true
         },
         type: {
             type: String,
-            reqyuired: true
+            required: true
         },
         colorGamut: {
             type: String,
-            reqyuired: true
+            required: true
         }
-    },
-    stock: {
-        type: Number,
-        required: true
     },
     sim: {
         type: {
-            typre: String,
+            type: String,
             enum: simType,
             required: true
         },

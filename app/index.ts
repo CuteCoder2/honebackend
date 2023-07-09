@@ -3,8 +3,8 @@ import {configDotenv} from  "dotenv"
 import App from "@/App"
 import PostController from "@/resources/controllers/PostControllers"
 import UserController from "@/resources/controllers/UserController"
-import BrandController from "./resources/controllers/BrandController"
-import ProductController from "./resources/controllers/ProductController"
+import BrandController from "@/resources/controllers/BrandController"
+import ProductController from "@/resources/controllers/ProductController"
 
 
 configDotenv()

@@ -1,5 +1,4 @@
-import { Document } from "mongoose";
-import { SchemaTypes } from "mongoose"
+import { Document , SchemaTypes } from "mongoose";
 
 export default interface CartI extends Document {
     user: typeof SchemaTypes.ObjectId,
