@@ -44,6 +44,10 @@ const ProductSchema = new Schema<ProductI>({
         type : String,
         enum :Object.values(productType),        
     },
+    colors: {
+        type: [String],
+        required: true
+    },
 },
     { timestamps: true }
 )

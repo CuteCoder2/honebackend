@@ -8,6 +8,11 @@ const CartSchema = new Schema<CartI>({
         ref: ModelsNames.user,
         required: true,
     },
+    ordered:{
+        type:Boolean,
+        required:true,
+        default:false
+    },
     products: [{
         quantity: {
             type: Number,
@@ -15,9 +20,13 @@ const CartSchema = new Schema<CartI>({
             min: 1,
             default: 1
         },
-        items: {
+        unit_price :{
+            type:Number,
+            required:true
+        },
+        item: {
             required: true,
-            type: [SchemaTypes.ObjectId],
+            type: SchemaTypes.ObjectId,
             ref: ModelsNames.product
         }
     }]

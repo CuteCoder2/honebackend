@@ -14,6 +14,7 @@ export default interface ProductI extends Document {
     images: string[],
     description: string,
     category : productCat[],
-    type : productType
+    type : productType,
+    colors:string[]
 
 }
