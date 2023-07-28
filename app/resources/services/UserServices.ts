@@ -11,13 +11,15 @@ class UserService {
 
             const user = await this.model.create({
                 email:data.email,
+                name:{
+                    first_name:data.first_name,
+                    last_name:data.last_name,
+                },
+                dob:data.dob,
+                pob:data.pob,
                 username:data.username,
                 password:data.password,
                 phone:[data.phone],
-                name:{
-                    first_name:data.first_name,
-                    last_name:data.last_name
-                }
             })
             
             const token = Token.createToken(user)

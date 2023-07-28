@@ -37,9 +37,9 @@ class UserController implements ControllerInterface {
 
     private register = async (req:Request , res:Response , next:NextFunction) => {
         try {
-            const {email , first_name , last_name , password , phone , username} = req.body
-            const userdata = await this.service.register({email , first_name ,last_name , password , phone , username}) 
-            res.status(201).json(userdata)
+            const {dob , email , first_name , last_name , password , phone , pob , username} = req.body
+            const user_data = await this.service.register({dob , email , first_name , last_name , password , phone , pob , username}) 
+            res.status(201).json(user_data)
         }catch (error) {
             return next(new HttpException(400 , "failed to register user"))
         }

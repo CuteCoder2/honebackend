@@ -13,6 +13,7 @@ export default  interface UserI extends Document {
     username:string,
     password:string,
     address:typeof SchemaTypes.ObjectId[],
+    stores:typeof SchemaTypes.ObjectId[],
     role?:typeof SchemaTypes.ObjectId[],
     isAdmin:boolean,
     isStoreAdmin:boolean,

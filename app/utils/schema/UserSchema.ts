@@ -1,4 +1,4 @@
-import { Schema } from "mongoose"
+import { Schema, SchemaTypes } from "mongoose"
 import UserI from "@/utils/interfaces/UserInterface"
 
 const UserSchema = new Schema<UserI>({
@@ -18,12 +18,16 @@ const UserSchema = new Schema<UserI>({
             required: true
         }
     },
-    phone: [],
+    phone: [String],
     email: {
         type:String,
         unique :true,
         trim :true,
         required:true,
+    },
+    stores : {
+        type:[SchemaTypes.ObjectId] || null,
+        require:true,
     },
     password:{
         type:String ,
@@ -43,6 +47,11 @@ const UserSchema = new Schema<UserI>({
         type:Boolean,
         required:true,
         default:true,
+    },
+    isStoreAdmin:{
+        type:Boolean,
+        required:true,
+        default:false,
     },
 },
 {timestamps:true})

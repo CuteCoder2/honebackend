@@ -10,5 +10,6 @@ export default interface StoreI extends Document {
         lat:number,
     },
     dob: Date
-    owner: typeof SchemaTypes.ObjectId
+    owner: typeof SchemaTypes.ObjectId,
+    private_policy : string
 }
