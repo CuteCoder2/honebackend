@@ -1,7 +1,8 @@
 export enum stateType  {
     pen = "pending",
     rej  = "rejected",
-    val  = "validated"
+    val  = "validated",
+    onw = "on way"
 }
 
 export enum osType {
@@ -29,4 +30,10 @@ export enum productCat  {
 export enum hardDriveType {
     sat= "SATA",
     ssd = "SSD"
+}
+
+export enum PaymentMethod  {
+    om = "orange Money",
+    mtmo = "MTN Mobile Money",
+    cart = "cart"
 }

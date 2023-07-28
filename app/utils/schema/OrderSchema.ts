@@ -4,29 +4,31 @@ import { stateType } from "@/helpers/types/global/commonTypes"
 import OrderI from "@/utils/interfaces/OrderInterface"
 
 const OrderSchema = new Schema<OrderI>({
-    user: {
+    cart: {
         type: SchemaTypes.ObjectId,
-        ref: ModelsNames.user,
         required: true,
+        ref: ModelsNames.product
     },
-    products: [{
-        quantity: {
-            type: Number,
-            required: true,
-            min: 1,
-            default: 1
-        },
-        iems: {
-            required: true,
-            type: [SchemaTypes.ObjectId],
-            ref: ModelsNames.product
-        }
-    }],
-    state : {
-        type:String,
-        enum : Object.values(stateType),
-        required:true,
-        default:stateType.pen
+    state: {
+        type: String,
+        enum: Object.values(stateType),
+        required: true,
+        default: stateType.pen
+    },
+    total_cost : {
+        type:Number,
+        required : true
+    },
+    discount:{
+        type:Number,
+        min:0,
+        max:100,
+        default : 0,
+    },
+    payment:{
+        type:[SchemaTypes.ObjectId],
+        ref:ModelsNames.payment,
+        required:true
     }
 })
 

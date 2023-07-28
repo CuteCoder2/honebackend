@@ -5,7 +5,7 @@ import ValidationMiddleWare from "@/middleware/ValidationMiddleWare";
 import { loginUserValidation, registerUserValidation } from "@/utils/validators/UserValidation";
 import HttpException from "@/utils/exceptions/HttpException";
 import AuthUserMiddleWare from "@/middleware/authenticatedUserMiddleWare";
-import { RegisterUserUniqueFieldValidation } from "@/middleware/UserMiddleWare";
+import { RegisterUserUniqueFieldValidation } from "@/middleware/UserMiddleWares";
 
 class UserController implements ControllerInterface {
 

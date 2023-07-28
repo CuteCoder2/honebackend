@@ -1,7 +1,7 @@
 import { Schema } from "mongoose"
-import UserInterface from "@/utils/interfaces/UserInterface"
+import UserI from "@/utils/interfaces/UserInterface"
 
-const UserSchema = new Schema<UserInterface>({
+const UserSchema = new Schema<UserI>({
     username: {
         type: String,
         required: true,
@@ -33,7 +33,17 @@ const UserSchema = new Schema<UserInterface>({
         type:String,
         require: true,
         default:"user"
-    }
+    },
+    isAdmin:{
+        type:Boolean,
+        required:true,
+        default:false,
+    },
+    isActive:{
+        type:Boolean,
+        required:true,
+        default:true,
+    },
 },
 {timestamps:true})
 

@@ -1,7 +1,8 @@
-import { Schema, SchemaTypes, model } from "mongoose";
+import { Schema, SchemaTypes } from "mongoose";
 import ModelsNames from "@/helpers/models/name";
+import AddressI from "@/utils/interfaces/AddressInterface";
 
-const UserAddressSchema = new Schema({
+const AddressSchema = new Schema<AddressI>({
     country : String ,
     town : {
         type:String,
@@ -11,6 +12,7 @@ const UserAddressSchema = new Schema({
         type:String,
         required: true
     },
+    pobox:String,
     user : {
         type: SchemaTypes.ObjectId,
         ref : ModelsNames.user,
@@ -18,7 +20,4 @@ const UserAddressSchema = new Schema({
     } 
 })
 
-
-const UserAddress = model(ModelsNames.address , UserAddressSchema)
-
-export default UserAddress 
+export default AddressSchema

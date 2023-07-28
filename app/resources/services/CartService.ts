@@ -1,5 +1,5 @@
 import HttpException from "@/utils/exceptions/HttpException";
-import CartModel from "../models/CartModel";
+import CartModel from "@/resources/models/CartModel";
 import { SchemaTypes } from "mongoose";
 
 export default class CartService {
@@ -42,13 +42,13 @@ export default class CartService {
     private removeItem = async (
         product: typeof SchemaTypes.ObjectId,
         id?: typeof SchemaTypes.ObjectId,
-    )=>{
+    ) => {
         try {
             const cart = await this.model.findById(id)
             if (!cart) return new HttpException(400, "no product found")
-            cart.products.map((element , index)=>{
-                if (element.item == product){
-                    // cart.products.
+            cart.products.map((element, index) => {
+                if (element.item == product) {
+                    cart.products.splice(index , 1)
                 }
             })
             return await cart.save()
@@ -79,6 +79,22 @@ export default class CartService {
                     }
                 }
             })
+            return await cart.save()
+        } catch (error) {
+            return new HttpException(400, "resource not found")
+        }
+    }
+
+
+    /**
+     * marked a cart as order 
+     *
+     */
+    private markedOrder = async (id: typeof SchemaTypes.ObjectId) => {
+        try {
+            const cart = await this.model.findById(id)
+            if (!cart) return new HttpException(400, "no product found")
+            cart.ordered = true
             return await cart.save()
         } catch (error) {
             return new HttpException(400, "resource not found")

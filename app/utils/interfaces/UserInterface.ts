@@ -1,15 +1,21 @@
-import { Document } from "mongoose";
+import { Document, SchemaTypes } from "mongoose";
 
 
 export default  interface UserI extends Document {
-    email:string,
     name:{
         first_name:string,
         last_name:string,
     },
+    dob?:string,
+    pob?:string,
     phone:Array<string>,
+    email:string,
     username:string,
     password:string,
-    role:string,
+    address:typeof SchemaTypes.ObjectId[],
+    role?:typeof SchemaTypes.ObjectId[],
+    isAdmin:boolean,
+    isStoreAdmin:boolean,
+    isActive:boolean,
     isValidPassword(password:string): Promise<Error | boolean> ,
 }

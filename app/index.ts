@@ -6,7 +6,6 @@ import UserController from "@/resources/controllers/UserController"
 import BrandController from "@/resources/controllers/BrandController"
 import ProductController from "@/resources/controllers/ProductController"
 
-
 configDotenv()
 
 const app = new App(
@@ -21,3 +20,5 @@ process.env.MONGO_DEV_URL as string
 )
 
 app.listen()
+
+// conda install -c conda-forge markdown django-rest-auth django-filter

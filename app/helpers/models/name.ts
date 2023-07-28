@@ -9,7 +9,8 @@ const ModelsNames = {
     pc : "computers",
     phoneacc:"phone_accessories",
     rating:"ratings",
-    watch : "watches"
+    watch : "watches",
+    payment : "payments"
 }
 
 export default ModelsNames

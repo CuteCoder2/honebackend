@@ -3,10 +3,9 @@ import { SchemaTypes } from "mongoose"
 import { stateType } from "@/helpers/types/global/commonTypes";
 
 export default interface OrderI extends Document {
-    user: typeof SchemaTypes.ObjectId,
-    products: {
-        quantity: number,
-        items: typeof SchemaTypes.ObjectId
-    }[],
+    cart: typeof SchemaTypes.ObjectId,
+    payment: typeof SchemaTypes.ObjectId[],
     state : stateType
+    discount:number
+    total_cost : number
 }
