@@ -1,5 +1,6 @@
-import { productCat, productType } from "@/helpers/types/global/commonTypes";
+import { productCat} from "@/helpers/types/global/commonTypes";
 import BrandI from "@/utils/interfaces/BrandInterface";
+import { SchemaTypes } from "mongoose";
 
 export type ProductDataTypes = {
     name: string,
@@ -10,7 +11,6 @@ export type ProductDataTypes = {
     images: string,
     description: string,
     category: productCat,
-    type: productType
 }
 
 export type filterProductPropsType = {
@@ -30,9 +30,14 @@ export type updateProductDatatype = {
     selling?: number ,
     brand?:BrandI,
     image?:string,
-    description?:string,
-    type?:productType,
-    category?:productCat,
-    images?: string,
+    images?: string[],
+    stock?:number,
+    colors?:string[],
+    list_desc? : string[],
+    short_desc? : string,
+    full_desc?: string,
+    cat? : typeof SchemaTypes.ObjectId,
+    sub_cat? : typeof SchemaTypes.ObjectId[],
+    store? : typeof SchemaTypes.ObjectId[]
 }
 

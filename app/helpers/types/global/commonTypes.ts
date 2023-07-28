@@ -1,39 +1,30 @@
-export enum stateType  {
+export enum stateType {
     pen = "pending",
-    rej  = "rejected",
-    val  = "validated",
+    rej = "rejected",
+    val = "validated",
     onw = "on way"
 }
 
-export enum osType {
-    and = "android",
-    ios = "IOS"
+
+export enum productCat {
+    elect = "electronic",
+}
+export enum productSubCat {
+    elect = "kitchen",
 }
 
-export enum simType {
-    na = "nano",
-    du = "dual"
+export enum genderType {
+    f = "female",
+    m = "male"
 }
 
-export enum productType {
-    mobile = "phone",
-    pc = "computer",
-    chg = "charger",
-    phoneAcc = "phone accessories",
-    watch = "smart watch"
+export enum LocalesType {
+    en = "english",
+    fr = "french"
 }
 
-export enum productCat  {
-    elect = "electronic",    
-}
-
-export enum hardDriveType {
-    sat= "SATA",
-    ssd = "SSD"
-}
-
-export enum PaymentMethod  {
+export enum PaymentMethod {
     om = "orange Money",
-    mtmo = "MTN Mobile Money",
-    cart = "cart"
+    mtn_momo = "MTN Mobile Money",
+    card = "card"
 }

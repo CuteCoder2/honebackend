@@ -9,7 +9,7 @@ export default class ProductService {
 
     public async newProduct(data: ProductDataTypes) {
         try {
-            const { brand, category, cost, description, image, images, name, selling, type } = data
+            const { brand, category, cost, description, image, images, name, selling } = data
             return await this.model.create({
                 "brand": brand,
                 "category": [...category],
@@ -17,7 +17,6 @@ export default class ProductService {
                 "image": image,
                 "images": [...images],
                 "name": name,
-                "type": type,
                 "price.cost": cost,
                 "price.selling": selling
             })
@@ -67,14 +66,11 @@ export default class ProductService {
 
     public async updateProduct(id: typeof SchemaTypes.ObjectId, data: updateProductDatatype) {
         try {
-            const { brand, category, cost, description, image, images, name, selling, type } = data
+            const { brand , cat , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_cat} = data
             const product = await this.model.findById(id)
             if (!product) return new HttpException(404, "resource not found")
-            if (brand) {
-                product.brand = brand
-            }
-            if (category) {
-                product.category.push(category)
+            if (name) {
+                product.name = name
             }
             if (cost) {
                 product.price.cost = cost
@@ -82,20 +78,41 @@ export default class ProductService {
             if (selling) {
                 product.price.selling = selling
             }
-            if (description) {
-                product.description = description
+            if (brand) {
+                product.brand = brand
             }
             if (image) {
                 product.image = image
             }
             if (images) {
-                product.images.push(images)
+                images.map((img)=>{
+                    product.images.push(img)
+                })
             }
-            if (name) {
-                product.name = name
+            if (stock) {
+                product.stock = stock
             }
-            if (type) {
-                product.type = type
+            if (colors) {
+                colors.map((color)=>{
+                    product.colors.push(color)
+                })
+            }
+            if (list_desc) {
+                product.list_desc = list_desc
+            }
+            if (short_desc) {
+                product.short_desc = short_desc
+            }
+            if (full_desc) {
+                product.full_desc = full_desc
+            }
+            if (cat) {
+                product.cat = cat
+            }
+            if (sub_cat) {
+                sub_cat.map((cat)=>{
+                    product.sub_cat.push(cat)
+                })
             }
             return await product.save()
         } catch (error) {

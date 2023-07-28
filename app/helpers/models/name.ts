@@ -5,12 +5,10 @@ const ModelsNames = {
     brand : "brands",
     product : "products",
     cart : "carts",
-    phone : "phones",
-    pc : "computers",
-    phoneacc:"phone_accessories",
     rating:"ratings",
-    watch : "watches",
-    payment : "payments"
+    payment : "payments",
+    cat : "category",
+    sub_cat : "sub_category",
 }
 
 export default ModelsNames
