@@ -25,10 +25,7 @@ const UserSchema = new Schema<UserI>({
         trim :true,
         required:true,
     },
-    stores : {
-        type:[SchemaTypes.ObjectId] || null,
-        require:true,
-    },
+    stores : SchemaTypes.ObjectId,
     password:{
         type:String ,
         requires:true 

@@ -1,6 +1,6 @@
 import { Schema, SchemaTypes } from "mongoose";
 import PaymentI from "../interfaces/PaymentInterface";
-import { PaymentMethod } from "@/helpers/types/global/commonTypes";
+import { PaymentMethod } from "@/helpers/types/common/common";
 import ModelsNames from "@/helpers/models/name";
 
 const PaymentSchema = new Schema<PaymentI>({

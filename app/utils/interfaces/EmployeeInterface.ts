@@ -1,6 +1,6 @@
 import { Document, SchemaTypes } from "mongoose";
 
-export default interface Employee extends Document {
+export default interface EmployeeI extends Document {
     // user employed
     user:typeof SchemaTypes.ObjectId
     // store employing the user 

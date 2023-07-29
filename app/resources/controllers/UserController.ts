@@ -33,12 +33,12 @@ class UserController implements ControllerInterface {
         `${this.path}/`,
         AuthUserMiddleWare,
         this.getUser)
-    }
+        }
 
     private register = async (req:Request , res:Response , next:NextFunction) => {
         try {
-            const {dob , email , first_name , last_name , password , phone , pob , username} = req.body
-            const user_data = await this.service.register({dob , email , first_name , last_name , password , phone , pob , username}) 
+            const {dob , email , first_name , last_name , password , phone , pob ,store , username} = req.body
+            const user_data = await this.service.register({dob , email , first_name , last_name , password , phone , pob , store , username}) 
             res.status(201).json(user_data)
         }catch (error) {
             return next(new HttpException(400 , "failed to register user"))

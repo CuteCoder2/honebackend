@@ -19,6 +19,7 @@ class UserService {
                 pob:data.pob,
                 username:data.username,
                 password:data.password,
+                store:data.store,
                 phone:[data.phone],
             })
             

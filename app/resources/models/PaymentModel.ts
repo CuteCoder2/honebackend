@@ -2,7 +2,7 @@ import ModelsNames from "@/helpers/models/name";
 import PaymentI from "@/utils/interfaces/PaymentInterface";
 import PaymentSchema from "@/utils/schema/PaymentSchema";
 import { model } from "mongoose";
-import UserModel from "./UserModel";
+import UserModel from "@/resources/models/UserModel";
 import HttpException from "@/utils/exceptions/HttpException";
 
 PaymentSchema.pre("save", async function (next) {

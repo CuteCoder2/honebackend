@@ -1,4 +1,4 @@
-import { PaymentMethod } from "@/helpers/types/global/commonTypes";
+import { PaymentMethod } from "@/helpers/types/common/common";
 import { SchemaTypes } from "mongoose";
 
 export default interface PaymentI {

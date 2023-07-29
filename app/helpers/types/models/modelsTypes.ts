@@ -1,6 +1,6 @@
 import { number } from "joi";
 import { SchemaTypes } from "mongoose";
-import { hardDriveType, osType, simType } from "../global/commonTypes";
+import { hardDriveType, osType, simType } from "../common/common";
 
 export type ratingData = {
     product: typeof SchemaTypes.ObjectId,

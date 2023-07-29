@@ -1,6 +1,6 @@
 import { Document, SchemaTypes } from "mongoose";
 
-export interface CategoryI extends Document {
+export default  interface CategoryI extends Document {
     name:string
     icon:string
     img:string
