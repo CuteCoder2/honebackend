@@ -9,17 +9,22 @@ export default class ProductService {
 
     public async newProduct(data: ProductDataTypes) {
         try {
-            const { brand, category, cost, description, image, images, name, selling, type } = data
+            const { brand , cat , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_cat  } = data
             return await this.model.create({
+                "name": name,
+                "price.cost": cost,
+                "price.selling": selling,
                 "brand": brand,
-                "category": [...category],
-                "description": description,
                 "image": image,
                 "images": [...images],
-                "name": name,
-                "type": type,
-                "price.cost": cost,
-                "price.selling": selling
+                "stock": stock,
+                "colors": [...colors],
+                "list_desc": [...list_desc],
+                "short_desc": short_desc,
+                "full_desc": full_desc,
+                "cat": cat,
+                "sub_cat": [...sub_cat],
+                "store":store
             })
         } catch (error) {
             console.log(error)
@@ -33,8 +38,8 @@ export default class ProductService {
             if (data.brand) {
                 products.where("brand").equals(data.brand)
             }
-            if (data.category) {
-                products.where("category").equals(data.category)
+            if (data.cat) {
+                products.where("cat").equals(data.cat)
             }
 
             if (data.cost) {
@@ -43,10 +48,6 @@ export default class ProductService {
 
             if (data.selling) {
                 products.where("price.selling").equals(data.selling)
-            }
-
-            if (data.type) {
-                products.where("type").equals(data.type)
             }
 
             if (data.name) {
@@ -67,14 +68,11 @@ export default class ProductService {
 
     public async updateProduct(id: typeof SchemaTypes.ObjectId, data: updateProductDatatype) {
         try {
-            const { brand, category, cost, description, image, images, name, selling, type } = data
+            const { brand , category , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , sub_category} = data
             const product = await this.model.findById(id)
             if (!product) return new HttpException(404, "resource not found")
-            if (brand) {
-                product.brand = brand
-            }
-            if (category) {
-                product.category.push(category)
+            if (name) {
+                product.name = name
             }
             if (cost) {
                 product.price.cost = cost
@@ -82,20 +80,41 @@ export default class ProductService {
             if (selling) {
                 product.price.selling = selling
             }
-            if (description) {
-                product.description = description
+            if (brand) {
+                product.brand = brand
             }
             if (image) {
                 product.image = image
             }
             if (images) {
-                product.images.push(images)
+                images.map((img)=>{
+                    product.images.push(img)
+                })
             }
-            if (name) {
-                product.name = name
+            if (stock) {
+                product.stock = stock
             }
-            if (type) {
-                product.type = type
+            if (colors) {
+                colors.map((color)=>{
+                    product.colors.push(color)
+                })
+            }
+            if (list_desc) {
+                product.list_desc = list_desc
+            }
+            if (short_desc) {
+                product.short_desc = short_desc
+            }
+            if (full_desc) {
+                product.full_desc = full_desc
+            }
+            if (category) {
+                product.category = category
+            }
+            if (sub_category) {
+                sub_category.map((cat)=>{
+                    product.sub_category.push(cat)
+                })
             }
             return await product.save()
         } catch (error) {

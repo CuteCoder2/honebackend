@@ -8,8 +8,14 @@ export const NewProductValidation = joi.object({
     image: joi.string().required(),
     images: joi.array().required(),
     category: joi.array().required(),
-    type: joi.string().required(),
-    description: joi.string().required()
+    stock:joi.number().required(),
+    colors:joi.array().required(),
+    list_desc : joi.string().required(),
+    short_desc : joi.string().required(),
+    full_desc: joi.string().required(),
+    cat : joi.string().required(),
+    sub_cat : joi.array().required(),
+    store : joi.string().required()
 })
 
 export const filterProductValidation = joi.object({

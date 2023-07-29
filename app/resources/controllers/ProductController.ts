@@ -4,7 +4,6 @@ import ProductServices from "@/resources/services/ProductService"
 import ValidationMiddleWare from "@/middleware/ValidationMiddleWare";
 import { NewProductValidation, filterProductValidation, updateProductValidation } from "@/utils/validators/ProductValidation";
 import { SchemaTypes } from "mongoose";
-import { deleteDataValidation } from "@/middleware/Models.common"
 
 export default class ProductController implements ControllerI {
     path = "/products"
@@ -38,22 +37,21 @@ export default class ProductController implements ControllerI {
 
 
     private  create = async (req: Request, res: Response) => {
-        const { name, cost, selling, brand, image, images, description, category, type } = req.body
-        const product = await this.service.newProduct({ name, cost, selling, brand, image, images, description, category, type })
+        const { brand , cat , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_cat  } = req.body
+        const product = await this.service.newProduct({ brand , cat , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_cat  })
         res.status(201).json(product)
     }
     
     private  getProducts = async (req: Request, res: Response) =>{
-        const data = req.body
-        const { brand, category, cost, limit, name, selling, skip, type } = req.body
-        const products = await this.service.filterProduct({ brand, category, cost, limit, name, selling, skip, type })
+        const { brand, cat, cost, limit, name, selling, skip} = req.body
+        const products = await this.service.filterProduct({ brand, cat, cost, limit, name, selling, skip})
         res.status(200).json(products)
     }
 
     private async updateProduct(req: Request, res: Response) {
         const id = req.params.id as unknown as typeof SchemaTypes.ObjectId
-        const { brand, category, cost, description, image, images, name, selling, type } = req.body
-        const product = await this.service.updateProduct(id, { brand, category, cost, description, image, images, name, selling, type })
+        const { brand , category , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_category  } = req.body
+        const product = await this.service.updateProduct(id, { brand , category , colors , cost , full_desc , image , images , list_desc , name , selling , short_desc , stock , store , sub_category  })
         res.status(202).json(product)
     }
 

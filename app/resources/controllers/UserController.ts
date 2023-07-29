@@ -33,7 +33,11 @@ class UserController implements ControllerInterface {
         `${this.path}/`,
         AuthUserMiddleWare,
         this.getUser)
-        }
+        
+        this.router.get(
+        `${this.path}/`,
+        this.checkUserStatus)
+    }
 
     private register = async (req:Request , res:Response , next:NextFunction) => {
         try {
@@ -65,6 +69,16 @@ class UserController implements ControllerInterface {
             return next(new HttpException(400 , "not logedin user"))
             
         }
+    }
+
+    private checkUserStatus = async (req:Request , res:Response , next : NextFunction)=>{
+        const bearerToken = req.headers.authorization
+        if (!bearerToken || !bearerToken.startsWith('Bearer')) {
+            return next(new HttpException(4001 , 'unauthorized action'))
+        }
+        const accessToken = bearerToken.split('Bearer ')[1].trim()
+        const verified = this.service.isLoggedIn(accessToken)
+        return res.json(verified)
     }
 }
 

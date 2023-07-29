@@ -1,5 +1,4 @@
 import { Document, SchemaTypes } from "mongoose";
-import BrandI from "@/utils/interfaces/BrandInterface";
 
 export default interface ProductI extends Document {
     name: string,
@@ -7,13 +6,15 @@ export default interface ProductI extends Document {
         cost: number,
         selling: number
     },
-    stock:number,
-    brand: BrandI,
+    brand: typeof SchemaTypes.ObjectId,
     image: string,
     images: string[],
-    description: string,
+    stock:number,
+    colors:string[],
+    list_desc : string[],
+    short_desc : string,
+    full_desc: string,
     category : typeof SchemaTypes.ObjectId,
-    sub_category : typeof SchemaTypes.ObjectId,
-    colors:string[]
-
+    sub_category : typeof SchemaTypes.ObjectId[],
+    store : typeof SchemaTypes.ObjectId
 }

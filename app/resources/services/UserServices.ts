@@ -1,7 +1,8 @@
 import { registerUserDataType, loginUserDataType} from "@/helpers/types/services/UserServicesType";
-
-import Token from "@/utils/token/Token";
+import Token, { verifyToken } from "@/utils/token/Token";
 import UserModel from "@/resources/models/UserModel";
+import TokenInterface from "@/utils/interfaces/TokenInterface";
+import  Jwt  from "jsonwebtoken";
 
 class UserService {
     private model = UserModel
@@ -56,6 +57,22 @@ class UserService {
         } catch (error) {
             throw new Error("user not found")
 
+        }
+    }
+
+    public async isLoggedIn (accessToken : string){
+        try {
+            // verify token
+            const verified :TokenInterface|Jwt.JsonWebTokenError = await verifyToken(accessToken)
+            if(verified instanceof Jwt.JsonWebTokenError){
+                return {msg:"unauthorized action" , "status":false}
+            }
+            if (verified) {
+              return true
+            }
+            return {msg:"unauthorized action" , "status":false}
+        } catch (error) {
+            throw new Error('failed to verify user status')
         }
     }
 }

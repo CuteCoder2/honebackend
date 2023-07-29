@@ -1,4 +1,4 @@
-import { Response , Request , NextFunction , RequestHandler } from "express";
+import { Response , Request , NextFunction } from "express";
 import UserModel from "@/resources/models/UserModel";
 import { verifyToken  } from "@/utils/token/Token";
 import TokenInterface from "@/utils/interfaces/TokenInterface";
@@ -18,7 +18,7 @@ const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction
         }
         const user = await UserModel.findById(payload.id)
         .select('-password')
-        .exec()
+        
 
         if(!user){
             return next(new HttpException(4001 , 'unauthorized action'))

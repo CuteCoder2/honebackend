@@ -1,6 +1,6 @@
 import { Schema, SchemaTypes } from "mongoose"
 import ModelsNames from "@/helpers/models/name"
-import ProductI from "@/utils/interfaces/productInterface";
+import ProductI from "@/utils/interfaces/ProductInterface"
 
 const ProductSchema = new Schema<ProductI>({
     name: {
@@ -27,10 +27,6 @@ const ProductSchema = new Schema<ProductI>({
         required: true,
     },
     images: [String],
-    description: {
-        type: String,
-        required: true,
-    },
     stock: {
         type: Number,
         required: true
@@ -45,6 +41,22 @@ const ProductSchema = new Schema<ProductI>({
         type: [String],
         required: true
     },
+    list_desc: {
+        type: [String],
+        required: true,
+    },
+    short_desc: {
+        type: String,
+        required: true,
+    },
+    full_desc: {
+        type: String,
+        required: true,
+    },
+    store : {
+        type:SchemaTypes.ObjectId,
+        required:true
+    }
 },
     { timestamps: true }
 )

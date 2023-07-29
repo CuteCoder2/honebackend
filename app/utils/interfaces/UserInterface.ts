@@ -1,3 +1,4 @@
+import { LocalesType, genderType } from "@/helpers/types/global/commonTypes";
 import { Document, SchemaTypes } from "mongoose";
 
 
@@ -18,5 +19,7 @@ export default  interface UserI extends Document {
     isAdmin:boolean,
     isStoreAdmin:boolean,
     isActive:boolean,
+    gender:genderType,
+    lang: LocalesType,
     isValidPassword(password:string): Promise<Error | boolean> ,
 }
