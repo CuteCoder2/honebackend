@@ -6,6 +6,6 @@ export const BrandValidation = joi.object({
 })
 
 export const updateBrandValidation = joi.object({
-    name:joi.string(),
-    image:joi.string(),
+    name:joi.string().optional(),
+    image:joi.string().optional(),
 })

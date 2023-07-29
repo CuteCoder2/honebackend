@@ -1,8 +1,12 @@
-import  {Schema} from "mongoose"
+import  {Schema, SchemaTypes} from "mongoose"
 
-interface TokenI extends Object {
+export interface TokenI extends Object {
     id:Schema.Types.ObjectId,
-    expired : number
+    expired : Date
 }
-
-export default TokenI
+export interface TokenSchemaInterface extends Document {
+    expired : Date,
+    token : string,
+    user : typeof SchemaTypes.ObjectId,
+    deviceInfo : string
+} 

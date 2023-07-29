@@ -33,6 +33,11 @@ const StoreSchema = new Schema<StoreI>({
         type: Date,
         require: true,
     },
+    contact: {
+        type: [String],
+        required: true,
+    },
+    email: String,
     status: {
         type: String,
         require: true,

@@ -1,4 +1,4 @@
-import { LocalesType, genderType } from "@/helpers/types/global/commonTypes";
+import { genderType, LocalesType } from "@/helpers/types/common/common";
 import { Document, SchemaTypes } from "mongoose";
 
 
@@ -13,13 +13,13 @@ export default  interface UserI extends Document {
     email:string,
     username:string,
     password:string,
-    address:typeof SchemaTypes.ObjectId[],
     stores:typeof SchemaTypes.ObjectId,
+    address:typeof SchemaTypes.ObjectId[],
+    gender:genderType,
+    lang: LocalesType,
     role?:typeof SchemaTypes.ObjectId[],
     isAdmin:boolean,
     isStoreAdmin:boolean,
     isActive:boolean,
-    gender:genderType,
-    lang: LocalesType,
     isValidPassword(password:string): Promise<Error | boolean> ,
 }

@@ -4,6 +4,6 @@ export default  interface CategoryI extends Document {
     name:string
     icon:string
     img:string
-    sub_cats?: typeof SchemaTypes.ObjectId[]
+    sub_categories?: typeof SchemaTypes.ObjectId[]
 }
 

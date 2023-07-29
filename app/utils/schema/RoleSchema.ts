@@ -1,6 +1,6 @@
 import { Schema } from "mongoose"
-import RoleI from "@/utils/interfaces/RoleInterface"
-import { roleType } from "@/helpers/types/common/common"
+import { roleType } from "@/helpers/types/common/common";
+import RoleI from "../interfaces/RoleInterface"
 
 const RoleSchema = new Schema<RoleI>({
     mode:{

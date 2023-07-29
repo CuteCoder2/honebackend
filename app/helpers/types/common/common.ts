@@ -1,7 +1,9 @@
-export enum stateType  {
+import { SchemaTypes } from "mongoose"
+
+export enum stateType {
     pen = "pending",
-    rej  = "rejected",
-    val  = "validated",
+    rej = "rejected",
+    val = "validated",
     onw = "on way"
 }
 
@@ -23,17 +25,32 @@ export enum roleType {
     viw_a = "view any"
 }
 
-export enum productCatType  {
-    elect = "electronic",    
+export enum genderType {
+    f = "female",
+    m = "male"
+}
+export enum LocalesType {
+    en = "english",
+    fr = "french"
+}
+
+export enum productCatType {
+    elect = "electronic",
 }
 
 export enum hardDriveType {
-    sat= "SATA",
+    sat = "SATA",
     ssd = "SSD"
 }
 
-export enum PaymentMethod  {
+export enum PaymentMethod {
     om = "orange Money",
     mtmo = "MTN Mobile Money",
     cart = "cart"
+}
+
+export type cartProductItem  = {
+        quantity: number,
+        item: typeof SchemaTypes.ObjectId,
+        unit_price:number
 }

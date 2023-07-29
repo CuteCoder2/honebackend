@@ -1,6 +1,6 @@
 import { Schema, SchemaTypes } from "mongoose"
 import ModelsNames from "@/helpers/models/name"
-import ProductI from "@/utils/interfaces/ProductInterface"
+import ProductI from "../interfaces/ProductInterface"
 
 const ProductSchema = new Schema<ProductI>({
     name: {

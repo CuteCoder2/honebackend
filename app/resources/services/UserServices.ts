@@ -1,8 +1,8 @@
 import { registerUserDataType, loginUserDataType} from "@/helpers/types/services/UserServicesType";
 import Token, { verifyToken } from "@/utils/token/Token";
 import UserModel from "@/resources/models/UserModel";
-import TokenInterface from "@/utils/interfaces/TokenInterface";
 import  Jwt  from "jsonwebtoken";
+import { TokenI } from "@/utils/interfaces/TokenInterface";
 
 class UserService {
     private model = UserModel
@@ -63,7 +63,7 @@ class UserService {
     public async isLoggedIn (accessToken : string){
         try {
             // verify token
-            const verified :TokenInterface|Jwt.JsonWebTokenError = await verifyToken(accessToken)
+            const verified :TokenI|Jwt.JsonWebTokenError = await verifyToken(accessToken)
             if(verified instanceof Jwt.JsonWebTokenError){
                 return {msg:"unauthorized action" , "status":false}
             }

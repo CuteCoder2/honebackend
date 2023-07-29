@@ -1,4 +1,4 @@
-import {cleanEnv , str , port  } from "envalid"
+import {cleanEnv , str , port  , num , email } from "envalid"
 
 const ValidateDotEnv = ()=>{
     cleanEnv(process.env , {

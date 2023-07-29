@@ -1,9 +1,9 @@
 import { Response , Request , NextFunction } from "express";
 import UserModel from "@/resources/models/UserModel";
-import { verifyToken  } from "@/utils/token/Token";
-import TokenInterface from "@/utils/interfaces/TokenInterface";
 import HttpException from "@/utils/exceptions/HttpException";
 import  Jwt  from "jsonwebtoken";
+import { TokenI } from "@/utils/interfaces/TokenInterface";
+import { verifyToken } from "@/utils/token/Token";
 
 const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction) : Promise<Response |void> =>{
     const bearerToken = req.headers.authorization
@@ -12,7 +12,7 @@ const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction
     }
     const accessToken = bearerToken.split('Bearer ')[1].trim()
     try {
-        const payload :TokenInterface|Jwt.JsonWebTokenError = await verifyToken(accessToken)
+        const payload :TokenI|Jwt.JsonWebTokenError = await verifyToken(accessToken)
         if(payload instanceof Jwt.JsonWebTokenError){
             return res.status(401).json({msg:"unauthorized action"})
         }

@@ -2,7 +2,7 @@ import { Router , Request , Response , NextFunction  } from "express";
 import ControllerInterface from "@/utils/interfaces/ControllersInterface";
 import UserService from "@/resources/services/UserServices";
 import ValidationMiddleWare from "@/middleware/ValidationMiddleWare";
-import { loginUserValidation, registerUserValidation } from "@/utils/validators/UserValidation";
+import { loginUserValidationSchema, registerUserValidationSchema } from "@/utils/validators/UserValidations";
 import HttpException from "@/utils/exceptions/HttpException";
 import AuthUserMiddleWare from "@/middleware/authenticatedUserMiddleWare";
 import { RegisterUserUniqueFieldValidation } from "@/middleware/UserMiddleWares";
@@ -21,12 +21,12 @@ class UserController implements ControllerInterface {
         this.router
         .post(
         `${this.path}/register`,
-        [ValidationMiddleWare(registerUserValidation) , RegisterUserUniqueFieldValidation],
+        [ValidationMiddleWare(registerUserValidationSchema) , RegisterUserUniqueFieldValidation],
         this.register)
 
         this.router.post(
         `${this.path}/login`,
-        ValidationMiddleWare(loginUserValidation),
+        ValidationMiddleWare(loginUserValidationSchema),
         this.login)
 
         this.router.get(

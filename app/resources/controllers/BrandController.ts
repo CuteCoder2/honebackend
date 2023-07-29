@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express"
 import HttpException from "@/utils/exceptions/HttpException"
-import { BrandValidation , updateBrandValidation } from "@/utils/validators/BrandValidation"
+import { BrandValidation , updateBrandValidation } from "@/utils/validators/BrandValidations"
 import ValidationMiddleware from "@/middleware/ValidationMiddleWare"
 import BrandService from "@/resources/services/BrandService"
 import ControllerI from "@/utils/interfaces/ControllersInterface"

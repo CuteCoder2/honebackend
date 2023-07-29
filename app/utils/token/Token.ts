@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import UserInterface from "@/utils/interfaces/UserInterface"
-import TokenInterface from "@/utils/interfaces/TokenInterface"
+import {TokenI} from "@/utils/interfaces/TokenInterface"
 
 export const createToken = (user: UserInterface): string => {
     return jwt.sign(
@@ -10,11 +10,12 @@ export const createToken = (user: UserInterface): string => {
     )
 }
 
-export const verifyToken = async (token: string): Promise<jwt.VerifyErrors | TokenInterface> => {
+
+export const verifyToken = async (token: string): Promise<jwt.VerifyErrors | TokenI> => {
     return new Promise((resolve, reject) => {
         jwt.verify(token, process.env.JWT_SECRETE as jwt.Secret, (error, payload) => {
             if (error) return reject(error)
-            resolve(payload as TokenInterface)
+            resolve(payload as TokenI)
         })
     })
 }

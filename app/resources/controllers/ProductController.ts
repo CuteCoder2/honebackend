@@ -2,8 +2,8 @@ import ControllerI from "@/utils/interfaces/ControllersInterface";
 import { Router, Request, Response } from "express"
 import ProductServices from "@/resources/services/ProductService"
 import ValidationMiddleWare from "@/middleware/ValidationMiddleWare";
-import { NewProductValidation, filterProductValidation, updateProductValidation } from "@/utils/validators/ProductValidation";
 import { SchemaTypes } from "mongoose";
+import { createProductValidationSchema, filterProductValidationSchema, updateProductValidationSchema } from "@/utils/validators/ProductValidations";
 
 export default class ProductController implements ControllerI {
     path = "/products"
@@ -17,17 +17,17 @@ export default class ProductController implements ControllerI {
     private initRoutes() {
         
         this.router.post(`${this.path}`,
-            ValidationMiddleWare(NewProductValidation),
+            ValidationMiddleWare(createProductValidationSchema),
             this.create
         )
         
         this.router.get(`${this.path}`,
-            ValidationMiddleWare(filterProductValidation),
+            ValidationMiddleWare(filterProductValidationSchema),
             this.getProducts
         )
 
         this.router.put(`${this.path}/:id`,
-            ValidationMiddleWare(updateProductValidation),
+            ValidationMiddleWare(updateProductValidationSchema),
             this.updateProduct
         )
        

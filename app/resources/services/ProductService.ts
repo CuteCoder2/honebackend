@@ -1,8 +1,8 @@
 import { SchemaTypes } from "mongoose";
 import HttpException from "@/utils/exceptions/HttpException";
 import Errors from "@/utils/messages/errors";
-import { ProductModel } from "@/resources/models/ProductModel";
 import { ProductDataTypes, filterProductPropsType, updateProductDatatype } from "@/helpers/types/services/ProductTypes"
+import ProductModel from "@/resources/models/ProductModel";
 
 export default class ProductService {
     private model = ProductModel

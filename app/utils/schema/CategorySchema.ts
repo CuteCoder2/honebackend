@@ -14,7 +14,7 @@ const CategorySchema = new Schema<CategoryI>({
             type: String,
             required: true
         },
-        sub_cats: {
+        sub_categories: {
             type: [SchemaTypes.ObjectId],
             required: true
         }

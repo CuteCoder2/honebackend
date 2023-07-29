@@ -1,7 +1,7 @@
 import {Router , Request , Response , NextFunction} from "express"
 import HttpException from "@/utils/exceptions/HttpException"
 import ValidationMiddleware from "@/middleware/ValidationMiddleWare"
-import Validate from "@/utils/validators/PostValidator"
+import Validate from "@/utils/validators/PostValidators"
 import PostService from "@/resources/services/PostService"
 import data from "@/data"
 import ControllerI from "@/utils/interfaces/ControllersInterface"

@@ -1,5 +1,5 @@
 import { Schema, SchemaTypes } from "mongoose"
-import RatingI from "@/utils//interfaces/Rating"
+import RatingI from "@/utils/interfaces/Ratinginterface"
 
 const RatingSchema = new Schema<RatingI>({
     product: {
