@@ -31,11 +31,11 @@ const ProductSchema = new Schema<ProductI>({
         type: Number,
         required: true
     },
-    category : {
-        type : SchemaTypes.ObjectId,        
+    category: {
+        type: SchemaTypes.ObjectId,
     },
-    sub_category : {
-        type : [SchemaTypes.ObjectId],
+    sub_category: {
+        type: [SchemaTypes.ObjectId],
     },
     colors: {
         type: [String],
@@ -53,13 +53,11 @@ const ProductSchema = new Schema<ProductI>({
         type: String,
         required: true,
     },
-    store : {
-        type:SchemaTypes.ObjectId,
-        required:true
+    store: {
+        type: SchemaTypes.ObjectId,
+        required: true
     }
-},
-    { timestamps: true }
-)
+},{ timestamps: true })
 
 
 export default ProductSchema

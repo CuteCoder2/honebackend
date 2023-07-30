@@ -17,5 +17,5 @@ const RatingSchema = new Schema<RatingI>({
         required: true,
         min: 0,
     },
-})
+},{timestamps:true})
 export default RatingSchema

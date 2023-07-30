@@ -30,7 +30,7 @@ const OrderSchema = new Schema<OrderI>({
         ref:ModelsNames.payment,
         required:true
     }
-})
+},{timestamps:true})
 
 
 export default OrderSchema

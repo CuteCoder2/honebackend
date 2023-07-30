@@ -18,6 +18,6 @@ const AddressSchema = new Schema<AddressI>({
         ref : ModelsNames.user,
         required:true
     } 
-})
+},{timestamps:true})
 
 export default AddressSchema

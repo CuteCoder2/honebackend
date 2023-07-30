@@ -11,7 +11,7 @@ export default interface StoreI extends Document {
         lon:number,
         lat:number,
     },
-    contact: string[],
+    contacts: string[],
     email: string,
     dob: Date,
     status:storeStatusType,

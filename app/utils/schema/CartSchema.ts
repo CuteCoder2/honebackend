@@ -30,7 +30,7 @@ const CartSchema = new Schema<CartI>({
             ref: ModelsNames.product
         }
     }]
-})
+},{timestamps:true})
 
 
 export default CartSchema

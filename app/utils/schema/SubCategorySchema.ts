@@ -14,6 +14,6 @@ const SubCategorySchema = new Schema<SubCategoryI>({
         type: String, 
         required: true
      }
-})
+},{timestamps:true})
 
 export default SubCategorySchema

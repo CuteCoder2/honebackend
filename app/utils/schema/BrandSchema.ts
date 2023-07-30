@@ -10,6 +10,6 @@ const BrandSchema = new Schema<BrandInterface>({
         type:String,
         required:true
     },
-})
+},{timestamps:true})
 
 export default BrandSchema

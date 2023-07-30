@@ -13,7 +13,8 @@ const ModelsNames = {
     category: "categories",
     cat : "category",
     sub_cat : "sub_category",
-    role:"roles"
+    role:"roles" ,
+    token : "tokens"
 }
 
 export default ModelsNames

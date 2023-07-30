@@ -18,6 +18,6 @@ const CategorySchema = new Schema<CategoryI>({
             type: [SchemaTypes.ObjectId],
             required: true
         }
-    })
+    },{timestamps:true})
 
 export default CategorySchema

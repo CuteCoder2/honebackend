@@ -3,7 +3,7 @@ import { roleType } from "@/helpers/types/common/common";
 import RoleI from "../interfaces/RoleInterface"
 
 const RoleSchema = new Schema<RoleI>({
-    mode:{
+    model:{
         type:String,
         required:true
     },
@@ -12,5 +12,5 @@ const RoleSchema = new Schema<RoleI>({
         enum:roleType,
         required:true
     }
-})
+},{timestamps:true})
 export default RoleSchema

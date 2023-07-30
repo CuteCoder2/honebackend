@@ -33,7 +33,7 @@ const StoreSchema = new Schema<StoreI>({
         type: Date,
         require: true,
     },
-    contact: {
+    contacts: {
         type: [String],
         required: true,
     },
@@ -52,6 +52,6 @@ const StoreSchema = new Schema<StoreI>({
         type: String,
         require: true,
     },
-})
+},{timestamps:true})
 
 export default StoreSchema

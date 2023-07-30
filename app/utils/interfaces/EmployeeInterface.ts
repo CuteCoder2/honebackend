@@ -8,5 +8,5 @@ export default interface EmployeeI extends Document {
     // additional role in the store
     add_roles : typeof SchemaTypes.ObjectId[]
     // post/role in the store
-    role : typeof SchemaTypes.ObjectId
+    post : typeof SchemaTypes.ObjectId
 }

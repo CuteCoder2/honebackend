@@ -14,10 +14,11 @@ const EmployeeSchema = new Schema<EmployeeI>({    // user employed
         type: [SchemaTypes.ObjectId],
         required: true,
     },
-    role: {
+    post: {
         type: SchemaTypes.ObjectId,
         required: true,
     }
-})
+},
+{timestamps:true})
 
 export default EmployeeSchema

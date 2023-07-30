@@ -26,6 +26,6 @@ const PaymentSchema = new Schema<PaymentI>({
         ref:ModelsNames.user,
         required:true,
     }
-})
+},{timestamps:true})
 
 export default PaymentSchema
