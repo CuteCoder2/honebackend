@@ -8,7 +8,7 @@ import { verifyToken } from "@/utils/token/Token";
 const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction) : Promise<Response |void> =>{
     const bearerToken = req.headers.authorization
     if (!bearerToken || !bearerToken.startsWith('Bearer')) {
-        return next(new HttpException(4001 , 'unauthorized action'))
+        return next(new HttpException(401 , 'unauthorized action'))
     }
     const accessToken = bearerToken.split('Bearer ')[1].trim()
     try {
@@ -21,13 +21,13 @@ const AuthUserMiddleWare  = async (req:Request , res:Response, next:NextFunction
         
 
         if(!user){
-            return next(new HttpException(4001 , 'unauthorized action'))
+            return next(new HttpException(401 , 'unauthorized action'))
         }
         
         req.user = user
         next()
     } catch (error) {
-        return next(new HttpException(4001 , 'unauthorized action'))
+        return next(new HttpException(401 , 'unauthorized action'))
     }    
 
 }

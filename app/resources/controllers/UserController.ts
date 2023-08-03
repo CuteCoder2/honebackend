@@ -62,11 +62,11 @@ class UserController implements ControllerInterface {
     private getUser = async (req:Request , res:Response , next : NextFunction): Promise<Response|void>=>{
         try {
             if(!req.user){
-                return next(new HttpException(400 , "not logedin user"))
+                return next(new HttpException(400 , "user not loggedin"))
             }
             res.status(200).json({user : req.user})
         } catch (error) {
-            return next(new HttpException(400 , "not logedin user"))
+            return next(new HttpException(400 , "user not loggedin"))
             
         }
     }

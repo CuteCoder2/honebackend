@@ -14,7 +14,8 @@ const ModelsNames = {
     cat : "category",
     sub_cat : "sub_category",
     role:"roles" ,
-    token : "tokens"
+    token : "tokens",
+    employee : "employees"
 }
 
 export default ModelsNames

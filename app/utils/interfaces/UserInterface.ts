@@ -16,7 +16,7 @@ export default  interface UserI extends Document {
     stores:typeof SchemaTypes.ObjectId,
     address:typeof SchemaTypes.ObjectId[],
     gender:genderType,
-    lang: LocalesType,
+    locale: LocalesType,
     role?:typeof SchemaTypes.ObjectId[],
     isAdmin:boolean,
     isStoreAdmin:boolean,

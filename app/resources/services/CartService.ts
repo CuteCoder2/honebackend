@@ -8,38 +8,38 @@ export default class CartService {
     /***
      * add or create a new item to the cart
      */
-    private addToCart = async (
-        price: number,
-        product: typeof SchemaTypes.ObjectId,
-        id?: typeof SchemaTypes.ObjectId,
-        user?: typeof SchemaTypes.ObjectId
-    ) => {
+    public addToCart = async (price: number, product: typeof SchemaTypes.ObjectId,user?: typeof SchemaTypes.ObjectId) => {
         try {
-            if (!id) {
-                const cart = await this.model.create({
+            const cart = await this.model.findOne({"ordered" :false , "_id" : user})
+
+
+            if (!cart) {
+                const new_cart = await this.model.create({
                     user: user,
                     products: [{
                         item: product,
                         unit_price: price
                     }]
                 })
-                return cart
+                return new_cart
             }
-            const cart = await this.model.findById(id)
-            if (!cart) return new HttpException(400, "no product found")
-            cart.products.push({
-                quantity: 1,
-                item: product,
-                unit_price: price
+            cart.products.map((instance)=>{
+                if(instance.item === product){
+                    instance.quantity ++
+                }
+                cart.products.push({
+                    quantity: 1,
+                    item: product,
+                    unit_price: price
+                })
             })
-            await cart.save()
-            return cart
+            return await cart.save()
         } catch (error) {
             return new HttpException(400, "failed to add to cart")
         }
     }
 
-    private removeItem = async (
+    public removeFromCart = async (
         product: typeof SchemaTypes.ObjectId,
         id?: typeof SchemaTypes.ObjectId,
     ) => {
@@ -48,7 +48,7 @@ export default class CartService {
             if (!cart) return new HttpException(400, "no product found")
             cart.products.map((element, index) => {
                 if (element.item == product) {
-                    cart.products.splice(index , 1)
+                    cart.products.splice(index, 1)
                 }
             })
             return await cart.save()
@@ -60,10 +60,8 @@ export default class CartService {
     /**
      * increment or decrement cart item quantity
      */
-    private addOrDecCartItem = async (
-        increment: boolean,
-        product: typeof SchemaTypes.ObjectId,
-        id?: typeof SchemaTypes.ObjectId) => {
+    public incOrDecItemInCart = async (
+        increment: boolean, product: typeof SchemaTypes.ObjectId, id?: typeof SchemaTypes.ObjectId) => {
         try {
             const cart = await this.model.findById(id)
             if (!cart) return new HttpException(400, "no product found")
@@ -74,7 +72,9 @@ export default class CartService {
                             element.quantity++
                             break;
                         case false:
-                            element.quantity--
+                            if(element.quantity > 1){
+                                element.quantity--
+                            }
                             break;
                     }
                 }
@@ -90,7 +90,7 @@ export default class CartService {
      * marked a cart as order 
      *
      */
-    private markedOrder = async (id: typeof SchemaTypes.ObjectId) => {
+    public markedAsOrder = async (id: typeof SchemaTypes.ObjectId) => {
         try {
             const cart = await this.model.findById(id)
             if (!cart) return new HttpException(400, "no product found")

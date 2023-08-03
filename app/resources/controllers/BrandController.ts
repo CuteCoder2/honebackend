@@ -5,8 +5,6 @@ import ValidationMiddleware from "@/middleware/ValidationMiddleWare"
 import BrandService from "@/resources/services/BrandService"
 import ControllerI from "@/utils/interfaces/ControllersInterface"
 import { SchemaTypes } from "mongoose"
-import ValidationMiddleWare from "@/middleware/ValidationMiddleWare"
-import { deleteDataValidation } from "@/middleware/Models.common"
 
 
 export default class BrandController implements ControllerI {

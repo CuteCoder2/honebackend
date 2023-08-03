@@ -21,6 +21,7 @@ export type addressDataType = {
 }
 
 export type categoryDataType = {
+    id?: typeof SchemaTypes.ObjectId,
     name?: string,
     icon?: string,
     img?: string,

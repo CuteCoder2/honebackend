@@ -3,11 +3,14 @@ import express, { Application } from "express";
 import compression from "compression"
 import cors from "cors"
 import morgan from "morgan"
+import { mw } from "request-ip"
 import Controller from "@/utils/interfaces/ControllersInterface"
 import helmet from "helmet"
 import DbConnection from "@/db/connection";
 import ValidateDotEnv from "@/utils/validators/validateEnv";
 import ErrorMiddleWare from "@/middleware/middleware";
+import SetAppLocaleMiddleWares from "./middleware/LocaleMiddleWares";
+import SetLocaleMiddleWares from "./middleware/setlanguageMiddleware";
 
 class App {
     public express: Application
@@ -26,9 +29,12 @@ class App {
     }
 
     private initMiddleWares(): void {
-        this.express.use(compression())
+        this.express.use(mw())
         this.express.use(helmet())
+        this.express.use(SetLocaleMiddleWares)
+        this.express.use(SetAppLocaleMiddleWares)
         this.express.use(morgan("dev"))
+        this.express.use(compression())
         this.express.use(cors())
         this.express.use(express.json())
         this.express.use(express.urlencoded({ extended: false }))

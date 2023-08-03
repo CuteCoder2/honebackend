@@ -1,7 +1,7 @@
 import { Schema, SchemaTypes } from "mongoose";
-import EmployeeI from "../interfaces/EmployeeInterface";
+import EmployeeI from "@/utils/interfaces/EmployeeInterface";
 
-const EmployeeSchema = new Schema<EmployeeI>({    // user employed
+const EmployeeSchema = new Schema<EmployeeI>({   
     user: {
         type: SchemaTypes.ObjectId,
         required: true,

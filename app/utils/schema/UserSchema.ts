@@ -1,5 +1,6 @@
 import { Schema, SchemaTypes } from "mongoose"
 import UserI from "@/utils/interfaces/UserInterface"
+import { LocalesType, genderType } from "@/helpers/types/common/common"
 
 const UserSchema = new Schema<UserI>({
     username: {
@@ -23,6 +24,17 @@ const UserSchema = new Schema<UserI>({
         type:String,
         unique :true,
         trim :true,
+        required:true,
+    },
+    locale: {
+        type:String,
+        enum:LocalesType,
+        required:true,
+        default:LocalesType.en
+    },
+    gender: {
+        type:String,
+        enum:genderType,
         required:true,
     },
     stores : SchemaTypes.ObjectId,

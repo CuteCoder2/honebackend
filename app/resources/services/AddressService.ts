@@ -21,7 +21,7 @@ export default class AddressService {
 
             return address
         } catch (error) {
-            return new HttpException(404 , "failed to add address")
+            return new HttpException(404 , "failed to get resource")
         }
     }
 
@@ -30,13 +30,14 @@ export default class AddressService {
             const address = await this.model.create({user : user , ...data})
             return address
         } catch (error) {
+            return new HttpException(404 , "failed to add address")
         }
     }
-
+    
     public updateAddress = async (id : typeof SchemaTypes.ObjectId , {country , pobox , street , town}: addressDataType)=>{
         try {
             const address = await this.model.findById(id)
-            if(!address) return new HttpException(404 , "resource not found")
+            if(!address) throw Error("resource not found")
             if(country){
                 address.country  = country 
             }
@@ -51,7 +52,7 @@ export default class AddressService {
             }
             return await address.save()
         } catch (error) {
-            return new HttpException(500 , "failed to update resource")
+            throw Error("failed to update resource")
         }
     }
 }

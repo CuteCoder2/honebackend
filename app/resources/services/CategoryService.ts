@@ -7,12 +7,12 @@ export default class CategoryService {
 
     private model = CategoryModel
 
-    public filterCategories = async ({name , sub_categories} : categoryDataType , id?: typeof SchemaTypes.ObjectId) => {
+    public filterCategories = async ({name , sub_categories} : categoryDataType ,     id?: typeof SchemaTypes.ObjectId,) => {
         try {
             const cates =  this.model.find()
             if (id) return await cates.where('_id').equals(id)
             if(name){
-                cates.where("name").equals(name)
+                cates.where({"name" : new RegExp(name , "i")})
             }
             if(sub_categories){
                 cates.where("sub_categories").in(sub_categories)
